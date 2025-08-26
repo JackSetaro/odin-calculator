@@ -39,6 +39,7 @@ function operate(numInput1, numInput2, operator) {
   display.innerText = tempSum;
   numberInput1 = sum = tempSum;
   numberInput2 = "";
+  operator = "";
 }
 
 function add(num1, num2) {
@@ -66,8 +67,14 @@ function setInput(input, type) {
       numberInput2 += input;
       display.innerText = numberInput2;
     }
-  } else {
-    if (input == "=") {
+  } else if(input === "clear") {
+    numberInput1 = "";
+    numberInput2 = "";
+    operator = "";
+    display.innerText = "";
+    sum = "";
+  }else{
+    if (input == "=" || (operator !== "" && numberInput2 !== "")) {
       operate(Number(numberInput1), Number(numberInput2), operator);
     }
     operator = input;
